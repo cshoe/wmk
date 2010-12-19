@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:wmk='urn:import:com.wikimerrykill.client'>
+	<ui:style>
+		.center {
+			margin: auto;
+			border: 5px solid red;
+			width: 700px;	
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:FlowPanel>
+			<wmk:GameBoard ui:field='board'/>
+		</g:FlowPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

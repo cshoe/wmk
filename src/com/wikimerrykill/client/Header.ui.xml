@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+		.header {
+			border: 5px solid #000000;
+		}
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="{style.header}">
+			<g:Anchor href='javascript:;' ui:field='googleLink'>Google Link</g:Anchor>
+			<g:Anchor href='javascript:;' ui:field='charityWaterLink'>charity: water Link</g:Anchor>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

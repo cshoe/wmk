@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:wmk='urn:import:com.wikimerrykill.client'>
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<wmk:Contestant ui:field="numberOne"/>
+		<wmk:Contestant ui:field="numberTwo"/>
+		<wmk:Contestant ui:field="numberThree"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

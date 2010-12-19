@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.centered { margin: 0 auto; }
+	</ui:style>
+	<g:HTMLPanel>
+		<table class='{style.centered}'>
+			<tr>
+				<td><g:ToggleButton ui:field='maleToggle'/></td>
+				<td><g:ToggleButton ui:field='femaleToggle'/></td>
+				<td>
+					<g:Label ui:field="maleLabel"/>
+					<g:Label ui:field="femaleLabel"/>
+				</td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 

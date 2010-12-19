@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.panel {
+		    padding: 10px;
+		 }
+		 
+		 .aboutText {
+		    text-align: left;
+		  }
+		  
+		  .buttons {
+		    text-align: right;
+		  }
+	</ui:style>
+	<g:HTMLPanel width='24em' styleName='{style.panel}'>
+		<div class='{style.aboutText}'>
+			<g:Label ui:field='message'/>
+		</div>
+		<div class='{style.buttons}'>
+			<g:Button ui:field='okButton'/>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 
