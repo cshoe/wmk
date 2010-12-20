@@ -6,7 +6,6 @@ import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.wikimerrykill.client.Contestant;
 import com.wikimerrykill.client.ContestantDO;
 import com.wikimerrykill.client.presenter.GameOptionsPresenter;
 
@@ -53,9 +52,9 @@ public class GameView extends Composite {
 			);
 		
 		return  new GameBoardViewImpl(
-					new Contestant(one), 
-					new Contestant(two),
-					new Contestant(three)
+					new ContestantView(one), 
+					new ContestantView(two),
+					new ContestantView(three)
 		);
 	}
 
