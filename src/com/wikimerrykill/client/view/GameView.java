@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.wikimerrykill.client.ContestantDO;
+import com.wikimerrykill.client.presenter.GameBoardPresenter;
 import com.wikimerrykill.client.presenter.GameOptionsPresenter;
 
 public class GameView extends Composite {
@@ -23,6 +24,7 @@ public class GameView extends Composite {
 	public GameView() {
 		initWidget(uiBinder.createAndBindUi(this));
 		options.setPresenter(new GameOptionsPresenter());
+		board.setPresenter(new GameBoardPresenter());
 	}
 	
 	public GameOptionsView getGameOptions() {

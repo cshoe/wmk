@@ -18,6 +18,8 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 	@UiField(provided=true) ContestantView numberOne;
 	@UiField(provided=true) ContestantView numberTwo;
 	@UiField(provided=true) ContestantView numberThree;
+	
+	private Presenter presenter;
 
 	public GameBoardViewImpl(ContestantView one, ContestantView two, ContestantView three) {
 		numberOne = one;
@@ -25,6 +27,22 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 		numberThree = three;
 		
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+	
+	public ContestantView getContestantOne() {
+		return numberOne;
+	}
+
+	public ContestantView getContestantTwo() {
+		return numberTwo;
+	}
+
+	public ContestantView getContestantThree() {
+		return numberThree;
+	}
+
+	public void setPresenter(Presenter presenter) {
+		this.presenter = presenter;
 	}
 
 }

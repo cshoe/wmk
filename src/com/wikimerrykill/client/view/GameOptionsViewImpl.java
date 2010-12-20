@@ -27,9 +27,7 @@ public class GameOptionsViewImpl extends Composite implements GameOptionsView {
 	public GameOptionsViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		maleToggle.setPixelSize(50, 50);
 		maleToggle.setText("Male");
-		femaleToggle.setPixelSize(50, 50);
 		femaleToggle.setText("Female");
 		setLabels();
 	}

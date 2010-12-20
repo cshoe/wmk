@@ -8,6 +8,9 @@
 		<g:Image ui:field="image"/>
 		<g:FlowPanel>
 			<g:Anchor ui:field="link"/>
+			<g:ToggleButton ui:field="wikiButton"/>
+			<g:ToggleButton ui:field="merryButton"/>
+			<g:ToggleButton ui:field="killButton"/>
 		</g:FlowPanel>
 	</g:HorizontalPanel>
 </ui:UiBinder> 
