@@ -6,8 +6,8 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
-		<wmk:ContestantView ui:field="numberOne"/>
-		<wmk:ContestantView ui:field="numberTwo"/>
-		<wmk:ContestantView ui:field="numberThree"/>
+		<wmk:ContestantViewImpl ui:field="numberOne"/>
+		<wmk:ContestantViewImpl ui:field="numberTwo"/>
+		<wmk:ContestantViewImpl ui:field="numberThree"/>
 	</g:HTMLPanel>
 </ui:UiBinder>

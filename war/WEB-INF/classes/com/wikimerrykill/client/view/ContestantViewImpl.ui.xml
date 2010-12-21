@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HorizontalPanel>
+		<g:Image ui:field="image"/>
+		<g:FlowPanel>
+			<g:Anchor ui:field="link"/>
+			<g:ToggleButton ui:field="wikiButton"/>
+			<g:ToggleButton ui:field="merryButton"/>
+			<g:ToggleButton ui:field="killButton"/>
+		</g:FlowPanel>
+	</g:HorizontalPanel>
+</ui:UiBinder> 

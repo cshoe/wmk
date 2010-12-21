@@ -1,13 +1,14 @@
 package com.wikimerrykill.client.view;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 import com.wikimerrykill.client.ContestantDO;
-import com.wikimerrykill.client.presenter.GameBoardPresenter;
 import com.wikimerrykill.client.presenter.GameOptionsPresenter;
 
 public class GameView extends Composite {
@@ -20,11 +21,13 @@ public class GameView extends Composite {
 	@UiField GameOptionsViewImpl options; 
 	@UiField GameBoardViewImpl board;
 	
-
-	public GameView() {
+	private EventBus eventBus;
+	
+	@Inject
+	public GameView(EventBus eventBus) {
 		initWidget(uiBinder.createAndBindUi(this));
 		options.setPresenter(new GameOptionsPresenter());
-		board.setPresenter(new GameBoardPresenter());
+		this.eventBus = eventBus;
 	}
 	
 	public GameOptionsView getGameOptions() {
@@ -54,9 +57,10 @@ public class GameView extends Composite {
 			);
 		
 		return  new GameBoardViewImpl(
-					new ContestantView(one), 
-					new ContestantView(two),
-					new ContestantView(three)
+					new ContestantViewImpl(one), 
+					new ContestantViewImpl(two),
+					new ContestantViewImpl(three),
+					eventBus
 		);
 	}
 

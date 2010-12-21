@@ -1,21 +1,12 @@
 package com.wikimerrykill.client.event;
 
-import com.google.gwt.event.shared.GwtEvent;
-import com.wikimerrykill.client.event.handler.MerryButtonClickHandler;
+import com.wikimerrykill.client.view.ContestantViewImpl;
 
-public class MerryButtonClickEvent extends GwtEvent<MerryButtonClickHandler> {
+public class MerryButtonClickEvent extends ContestantButtonClickEvent {
 
-	public static Type<MerryButtonClickHandler> TYPE 
-										= new Type<MerryButtonClickHandler>();
-	
-	@Override
-	protected void dispatch(MerryButtonClickHandler handler) {
-		handler.onMerryButtonClick();
+	public MerryButtonClickEvent(ContestantViewImpl contestantSource, boolean turnedOn) {
+		super(contestantSource, turnedOn);
 	}
 
-	@Override
-	public Type<MerryButtonClickHandler> getAssociatedType() {
-		return TYPE;
-	}
 
 }

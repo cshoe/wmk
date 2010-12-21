@@ -1,21 +1,10 @@
 package com.wikimerrykill.client.event;
 
-import com.google.gwt.event.shared.GwtEvent;
-import com.wikimerrykill.client.event.handler.KillButtonClickHandler;
+import com.wikimerrykill.client.view.ContestantViewImpl;
 
-public class KillButtonClickEvent extends GwtEvent<KillButtonClickHandler> {
+public class KillButtonClickEvent extends ContestantButtonClickEvent {
 
-	public static Type<KillButtonClickHandler> TYPE 
-										= new Type<KillButtonClickHandler>(); 
-	
-	@Override
-	protected void dispatch(KillButtonClickHandler handler) {
-		handler.onKillButtonClick();
+	public KillButtonClickEvent(ContestantViewImpl contestantSource, boolean turnedOn) {
+		super(contestantSource, turnedOn);
 	}
-
-	@Override
-	public Type<KillButtonClickHandler> getAssociatedType() {
-		return TYPE;
-	}
-
 }
