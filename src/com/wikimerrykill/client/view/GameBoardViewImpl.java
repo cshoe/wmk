@@ -33,8 +33,8 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 		numberOne = one;
 		numberTwo = two;
 		numberThree = three;
-		setPresenter(new GameBoardPresenter(numberOne, numberTwo, numberThree));
 		this.eventBus = eventBus;
+		setPresenter(new GameBoardPresenter(numberOne, numberTwo, numberThree, eventBus));
 		init();
 		
 		initWidget(uiBinder.createAndBindUi(this));

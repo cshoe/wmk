@@ -76,7 +76,7 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	//Setters
 	
 	public void setWikiButtonValue(boolean toWiki) {
-		wikiButton.setValue(toWiki);
+		wikiButton.setValue(toWiki, false);
 	}
 	
 	public void setWikiButtonEnabled(boolean isEnabled) {
@@ -84,7 +84,7 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	}
 	
 	public void setMerryButtonValue(boolean toMerry) {
-		merryButton.setValue(toMerry);
+		merryButton.setValue(toMerry, false);
 	}
 	
 	public void setMerryButtonEnabled(boolean isEnabled) {
@@ -92,7 +92,7 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	}
 	
 	public void setKillButtonValue(boolean toKill) {
-		killButton.setValue(toKill);
+		killButton.setValue(toKill, false);
 	}
 	
 	public void setKillButtonEnabled(boolean isEnabled) {

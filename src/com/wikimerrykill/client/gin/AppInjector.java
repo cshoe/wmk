@@ -1,5 +1,6 @@
 package com.wikimerrykill.client.gin;
 
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.inject.client.Ginjector;
 import com.wikimerrykill.client.app.WmkApp;
 
@@ -7,4 +8,5 @@ import com.wikimerrykill.client.app.WmkApp;
 //to return an WmkApp
 public interface AppInjector extends Ginjector {
 	WmkApp getWmkApp();
+	EventBus getEventBus();
 }

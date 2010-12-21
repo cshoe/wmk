@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.wikimerrykill.client.ContestantDO;
+import com.wikimerrykill.client.presenter.ContestantPresenter;
 import com.wikimerrykill.client.presenter.GameOptionsPresenter;
 
 public class GameView extends Composite {
@@ -25,9 +26,12 @@ public class GameView extends Composite {
 	
 	@Inject
 	public GameView(EventBus eventBus) {
+		//This must be set before initWidget is called as it calls the 
+		//uiFactory method below which needs eventBus.
+		this.eventBus = eventBus;
+
 		initWidget(uiBinder.createAndBindUi(this));
 		options.setPresenter(new GameOptionsPresenter());
-		this.eventBus = eventBus;
 	}
 	
 	public GameOptionsView getGameOptions() {
@@ -55,11 +59,18 @@ public class GameView extends Composite {
 					"http://en.wikipedia.org/wiki/Princess_Leia_Organa",
 					"http://upload.wikimedia.org/wikipedia/en/8/8b/Princess_leia_film.jpg"
 			);
+		ContestantViewImpl oneView = new ContestantViewImpl(one);
+		ContestantViewImpl twoView = new ContestantViewImpl(two);
+		ContestantViewImpl threeView = new ContestantViewImpl(three);
+		
+		oneView.setPresenter(new ContestantPresenter(eventBus));
+		twoView.setPresenter(new ContestantPresenter(eventBus));
+		threeView.setPresenter(new ContestantPresenter(eventBus));
 		
 		return  new GameBoardViewImpl(
-					new ContestantViewImpl(one), 
-					new ContestantViewImpl(two),
-					new ContestantViewImpl(three),
+					oneView,
+					twoView,
+					threeView,
 					eventBus
 		);
 	}
