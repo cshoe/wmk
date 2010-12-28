@@ -3,9 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:wmk='urn:import:com.wikimerrykill.client.view'>
 	<ui:style>
-	
 		.wrapper { margin: 0 auto; }
-		
 	</ui:style>
 	<g:HTMLPanel styleName='{style.wrapper}'>
 		<wmk:GameOptionsViewImpl ui:field='options'/>

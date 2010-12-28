@@ -19,8 +19,8 @@ public class GameView extends Composite {
 
 	interface GameViewUiBinder extends UiBinder<Widget, GameView> {}
 	
-	@UiField GameOptionsViewImpl options; 
-	@UiField GameBoardViewImpl board;
+	@UiField GameOptionsView options; 
+	@UiField GameBoardView board;
 	
 	private EventBus eventBus;
 	
@@ -31,11 +31,15 @@ public class GameView extends Composite {
 		this.eventBus = eventBus;
 
 		initWidget(uiBinder.createAndBindUi(this));
-		options.setPresenter(new GameOptionsPresenter());
+		options.setPresenter(new GameOptionsPresenter(eventBus));
 	}
 	
 	public GameOptionsView getGameOptions() {
 		return options;
+	}
+	
+	public void setGameBoardView(GameBoardView g) {
+		this.board = g;
 	}
 	
 	@UiFactory GameBoardViewImpl makeGameBoard() {

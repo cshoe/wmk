@@ -3,8 +3,10 @@ package com.wikimerrykill.client.presenter;
 import java.util.ArrayList;
 
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
 import com.wikimerrykill.client.event.ContestantButtonClickEvent;
+import com.wikimerrykill.client.event.GameOptionsChangeEvent;
 import com.wikimerrykill.client.event.KillButtonClickEvent;
 import com.wikimerrykill.client.event.MerryButtonClickEvent;
 import com.wikimerrykill.client.event.WikiButtonClickEvent;
@@ -13,9 +15,9 @@ import com.wikimerrykill.client.view.ContestantViewImpl;
 import com.wikimerrykill.client.view.GameBoardView.Presenter;
 
 public class GameBoardPresenter implements Presenter {
-	private ContestantViewImpl contestantOne;
-	private ContestantViewImpl contestantTwo;
-	private ContestantViewImpl contestantThree;
+	private ContestantView contestantOne;
+	private ContestantView contestantTwo;
+	private ContestantView contestantThree;
 	private EventBus eventBus;
 	
 	@Inject
@@ -30,6 +32,28 @@ public class GameBoardPresenter implements Presenter {
 	
 	private void bind() {
 		eventBus.addHandler(ContestantButtonClickEvent.TYPE, this);
+		eventBus.addHandler(GameOptionsChangeEvent.TYPE, this);
+	}
+	
+	private void resetContestants(ContestantView one, ContestantView two, ContestantView three) {
+		contestantOne = one;
+		contestantTwo = two;
+		contestantThree = three;
+		
+	}
+	
+	public void onGameOptionsChange(GameOptionsChangeEvent e) {
+		//get new contestants base on options
+		if (e.getFemaleOn() && e.getMaleOn()) {
+			Window.alert("Both on");
+		} else if (e.getFemaleOn()) {
+			Window.alert("Female only");
+		} else if (e.getMaleOn()) {
+			Window.alert("Male only");
+		} else {
+			//no option selected.  Return female contestants.
+			Window.alert("None on");
+		}
 	}
 
 	//Handles button clicks from contestant views

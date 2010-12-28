@@ -39,14 +39,14 @@ public class GameOptionsViewImpl extends Composite implements GameOptionsView {
 	@UiHandler("maleToggle")
 	void onMaleClick(ClickEvent e) {
 		if (presenter != null) {
-			presenter.onMaleClicked(maleToggle.isDown(), maleLabel);
+			presenter.onMaleClicked(maleToggle.isDown(), femaleToggle.isDown(), maleLabel);
 		}
 	}
 	
 	@UiHandler("femaleToggle")
 	void onFemaleClick(ClickEvent e) {
 		if (presenter != null) {
-			presenter.onFemaleClicked(femaleToggle.isDown(), femaleLabel);
+			presenter.onFemaleClicked(femaleToggle.isDown(), maleToggle.isDown(), femaleLabel);
 		}
 	}
 	
