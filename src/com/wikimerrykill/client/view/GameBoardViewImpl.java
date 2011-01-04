@@ -5,11 +5,10 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.wikimerrykill.client.event.KillButtonClickEvent;
-import com.wikimerrykill.client.event.MerryButtonClickEvent;
-import com.wikimerrykill.client.event.WikiButtonClickEvent;
+import com.wikimerrykill.client.event.ContestantButtonClickEvent;
 import com.wikimerrykill.client.presenter.GameBoardPresenter;
 
 public class GameBoardViewImpl extends Composite implements GameBoardView {
@@ -21,9 +20,10 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 			UiBinder<Widget, GameBoardViewImpl> {
 	}
 	
-	@UiField(provided=true) ContestantViewImpl numberOne;
-	@UiField(provided=true) ContestantViewImpl numberTwo;
-	@UiField(provided=true) ContestantViewImpl numberThree;
+	@UiField FlowPanel panel; 
+	ContestantView numberOne;
+	ContestantView numberTwo;
+	ContestantView numberThree;
 	
 	private Presenter presenter;
 	private EventBus eventBus;
@@ -34,32 +34,69 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 		numberTwo = two;
 		numberThree = three;
 		this.eventBus = eventBus;
-		setPresenter(new GameBoardPresenter(numberOne, numberTwo, numberThree, eventBus));
+		setPresenter(new GameBoardPresenter(this, this.eventBus));
 		init();
 		
 		initWidget(uiBinder.createAndBindUi(this));
+		
+		panel.add(one);
+		panel.add(two);
+		panel.add(three);
 	}
 	
 	private void init() {
-		WikiButtonClickEvent.register(eventBus, presenter);
-		MerryButtonClickEvent.register(eventBus, presenter);
-		KillButtonClickEvent.register(eventBus, presenter);
+		ContestantButtonClickEvent.register(eventBus, presenter);
 	}
 	
-	public ContestantViewImpl getContestantOne() {
+	public ContestantView getContestantOne() {
 		return numberOne;
 	}
 
-	public ContestantViewImpl getContestantTwo() {
+	public ContestantView getContestantTwo() {
 		return numberTwo;
 	}
 
-	public ContestantViewImpl getContestantThree() {
+	public ContestantView getContestantThree() {
 		return numberThree;
+	}
+	
+	public void setContestantOne(ContestantViewImpl c) {
+		numberOne = c;
+	}
+	
+	public void setContestantTwo(ContestantViewImpl c) {
+		numberTwo = c;
+	}
+	
+	public void setContestantThree(ContestantViewImpl c) {
+		numberThree = c;
+	}
+	
+	public void refreshContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three) {
+		hideContestants();
+		changeContestants(one, two, three);
+		showContestants();
+	}
+	
+	public void hideContestants() {
+		panel.remove(numberOne);
+		panel.remove(numberTwo);
+		panel.remove(numberThree);
+	}
+	
+	public void changeContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three) {
+		setContestantOne(one);
+		setContestantTwo(two);
+		setContestantThree(three);
+	}
+	
+	public void showContestants() {
+		panel.add(numberOne);
+		panel.add(numberTwo);
+		panel.add(numberThree);
 	}
 
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
 	}
-
 }

@@ -29,6 +29,7 @@ public class GameOptionsViewImpl extends Composite implements GameOptionsView {
 		
 		maleToggle.setText("Male");
 		femaleToggle.setText("Female");
+		femaleToggle.setDown(true);
 		setLabels();
 	}
 

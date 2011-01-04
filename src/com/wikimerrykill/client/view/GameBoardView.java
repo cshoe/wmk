@@ -5,9 +5,15 @@ import com.wikimerrykill.client.event.handler.ContestantButtonClickHandler;
 import com.wikimerrykill.client.event.handler.GameOptionsChangeHandler;
 
 public interface GameBoardView extends IsWidget {
-	public ContestantViewImpl getContestantOne();
-	public ContestantViewImpl getContestantTwo();
-	public ContestantViewImpl getContestantThree();
+	public ContestantView getContestantOne();
+	public ContestantView getContestantTwo();
+	public ContestantView getContestantThree();
+	
+	public void setContestantOne(ContestantViewImpl c);
+	public void setContestantTwo(ContestantViewImpl c);
+	public void setContestantThree(ContestantViewImpl c);
+	
+	public void refreshContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three);
 	
 	public interface Presenter extends ContestantButtonClickHandler, GameOptionsChangeHandler {
 		

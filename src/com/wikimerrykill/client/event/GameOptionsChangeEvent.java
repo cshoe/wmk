@@ -1,5 +1,6 @@
 package com.wikimerrykill.client.event;
 
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.wikimerrykill.client.event.handler.GameOptionsChangeHandler;
 
@@ -14,6 +15,10 @@ public class GameOptionsChangeEvent extends GwtEvent<GameOptionsChangeHandler> {
 	public GameOptionsChangeEvent(boolean maleOn, boolean femaleOn) {
 		this.maleOn = maleOn;
 		this.femaleOn = femaleOn;
+	}
+	
+	public static void register(EventBus eventBus, GameOptionsChangeHandler g) {
+		eventBus.addHandler(TYPE, g);
 	}
 	
 	public boolean getMaleOn() {

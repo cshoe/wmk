@@ -60,7 +60,6 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	}
 	
 	//Getters
-	
 	public ToggleButton getWikiButton() {
 		return wikiButton;
 	}
@@ -74,7 +73,6 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	}
 	
 	//Setters
-	
 	public void setWikiButtonValue(boolean toWiki) {
 		wikiButton.setValue(toWiki, false);
 	}
@@ -101,6 +99,14 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+	}
+
+	public void hide() {
+		this.setVisible(false);
+	}
+	
+	public void show() {
+		this.setVisible(true);
 	}
 
 }

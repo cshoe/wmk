@@ -1,13 +1,10 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:wmk='urn:import:com.wikimerrykill.client.view'>
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
 		
 	</ui:style>
-	<g:HTMLPanel>
-		<wmk:ContestantViewImpl ui:field="numberOne"/>
-		<wmk:ContestantViewImpl ui:field="numberTwo"/>
-		<wmk:ContestantViewImpl ui:field="numberThree"/>
-	</g:HTMLPanel>
+	<g:FlowPanel ui:field="panel">
+
+	</g:FlowPanel>
 </ui:UiBinder>

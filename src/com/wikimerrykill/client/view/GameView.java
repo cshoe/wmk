@@ -61,7 +61,7 @@ public class GameView extends Composite {
 			new ContestantDO(
 					"Princess Leia Organa",
 					"http://en.wikipedia.org/wiki/Princess_Leia_Organa",
-					"http://upload.wikimedia.org/wikipedia/en/8/8b/Princess_leia_film.jpg"
+					"http://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Princess_leia_film.jpg/250px-Princess_leia_film.jpg"
 			);
 		ContestantViewImpl oneView = new ContestantViewImpl(one);
 		ContestantViewImpl twoView = new ContestantViewImpl(two);
@@ -78,5 +78,4 @@ public class GameView extends Composite {
 					eventBus
 		);
 	}
-
 }

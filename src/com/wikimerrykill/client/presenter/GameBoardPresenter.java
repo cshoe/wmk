@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
+import com.wikimerrykill.client.ContestantDO;
 import com.wikimerrykill.client.event.ContestantButtonClickEvent;
 import com.wikimerrykill.client.event.GameOptionsChangeEvent;
 import com.wikimerrykill.client.event.KillButtonClickEvent;
@@ -12,44 +13,117 @@ import com.wikimerrykill.client.event.MerryButtonClickEvent;
 import com.wikimerrykill.client.event.WikiButtonClickEvent;
 import com.wikimerrykill.client.view.ContestantView;
 import com.wikimerrykill.client.view.ContestantViewImpl;
+import com.wikimerrykill.client.view.GameBoardView;
 import com.wikimerrykill.client.view.GameBoardView.Presenter;
 
 public class GameBoardPresenter implements Presenter {
-	private ContestantView contestantOne;
-	private ContestantView contestantTwo;
-	private ContestantView contestantThree;
+	private GameBoardView gameBoardView;
 	private EventBus eventBus;
 	
 	@Inject
-	public GameBoardPresenter(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three, EventBus eventBus) {
-		this.contestantOne = one;
-		this.contestantTwo = two;
-		this.contestantThree = three;
+	public GameBoardPresenter(GameBoardView gameBoardView, EventBus eventBus) {
+		this.gameBoardView = gameBoardView;
 		this.eventBus = eventBus;
 		bind();
-		
 	}
 	
 	private void bind() {
-		eventBus.addHandler(ContestantButtonClickEvent.TYPE, this);
-		eventBus.addHandler(GameOptionsChangeEvent.TYPE, this);
-	}
-	
-	private void resetContestants(ContestantView one, ContestantView two, ContestantView three) {
-		contestantOne = one;
-		contestantTwo = two;
-		contestantThree = three;
-		
+		GameOptionsChangeEvent.register(eventBus, this);
 	}
 	
 	public void onGameOptionsChange(GameOptionsChangeEvent e) {
-		//get new contestants base on options
+		//get new contestants based on options
 		if (e.getFemaleOn() && e.getMaleOn()) {
-			Window.alert("Both on");
+			ContestantDO one = 
+				new ContestantDO(
+						"Courtney Love",
+						"http://en.wikipedia.org/wiki/Courtney_Love",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/CourtneyLove1045.png/220px-CourtneyLove1045.png"
+				);
+			
+			ContestantDO two = 
+				new ContestantDO(
+						"Yoda",
+						"http://en.wikipedia.org/wiki/Yoda",
+						"http://upload.wikimedia.org/wikipedia/en/thumb/9/96/CGIYoda.jpg/250px-CGIYoda.jpg"
+				);
+			
+			ContestantDO three = 
+				new ContestantDO(
+						"Princess Leia Organa",
+						"http://en.wikipedia.org/wiki/Princess_Leia_Organa",
+						"http://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Princess_leia_film.jpg/250px-Princess_leia_film.jpg"
+				);
+			ContestantViewImpl oneView = new ContestantViewImpl(one);
+			ContestantViewImpl twoView = new ContestantViewImpl(two);
+			ContestantViewImpl threeView = new ContestantViewImpl(three);
+			
+			oneView.setPresenter(new ContestantPresenter(eventBus));
+			twoView.setPresenter(new ContestantPresenter(eventBus));
+			threeView.setPresenter(new ContestantPresenter(eventBus));
+			
+			gameBoardView.refreshContestants(oneView, twoView, threeView);
 		} else if (e.getFemaleOn()) {
-			Window.alert("Female only");
+			ContestantDO one = 
+				new ContestantDO(
+						"Courtney Love",
+						"http://en.wikipedia.org/wiki/Courtney_Love",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/CourtneyLove1045.png/220px-CourtneyLove1045.png"
+				);
+			
+			ContestantDO two = 
+				new ContestantDO(
+						"Courtney Cox",
+						"http://en.wikipedia.org/wiki/Courteney_Cox",
+						"http://upload.wikimedia.org/wikipedia/commons/0/0f/CourteneyCoxFeb09.jpg"
+				);
+			
+			ContestantDO three = 
+				new ContestantDO(
+						"Princess Leia Organa",
+						"http://en.wikipedia.org/wiki/Princess_Leia_Organa",
+						"http://upload.wikimedia.org/wikipedia/en/thumb/8/8b/Princess_leia_film.jpg/250px-Princess_leia_film.jpg"
+				);
+			ContestantViewImpl oneView = new ContestantViewImpl(one);
+			ContestantViewImpl twoView = new ContestantViewImpl(two);
+			ContestantViewImpl threeView = new ContestantViewImpl(three);
+			
+			oneView.setPresenter(new ContestantPresenter(eventBus));
+			twoView.setPresenter(new ContestantPresenter(eventBus));
+			threeView.setPresenter(new ContestantPresenter(eventBus));
+			
+			gameBoardView.refreshContestants(oneView, twoView, threeView);
 		} else if (e.getMaleOn()) {
-			Window.alert("Male only");
+			ContestantDO one = 
+				new ContestantDO(
+						"Jabba The Hutt",
+						"http://en.wikipedia.org/wiki/Jabba_the_Hutt",
+						"http://upload.wikimedia.org/wikipedia/en/thumb/6/66/JabbatheHuttROTJ.jpg/250px-JabbatheHuttROTJ.jpg"
+				);
+			
+			ContestantDO two = 
+				new ContestantDO(
+						"Yoda",
+						"http://en.wikipedia.org/wiki/Yoda",
+						"http://upload.wikimedia.org/wikipedia/en/thumb/9/96/CGIYoda.jpg/250px-CGIYoda.jpg"
+				);
+			
+			ContestantDO three = 
+				new ContestantDO(
+						"Eddie Van Halen",
+						"http://en.wikipedia.org/wiki/Eddie_Van_Halen",
+						"http://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Eddie_Van_Halen_2007-11-10.jpg/250px-Eddie_Van_Halen_2007-11-10.jpg"
+				);
+			ContestantViewImpl oneView = new ContestantViewImpl(one);
+			ContestantViewImpl twoView = new ContestantViewImpl(two);
+			ContestantViewImpl threeView = new ContestantViewImpl(three);
+			
+			oneView.setPresenter(new ContestantPresenter(eventBus));
+			twoView.setPresenter(new ContestantPresenter(eventBus));
+			threeView.setPresenter(new ContestantPresenter(eventBus));
+			
+			gameBoardView.refreshContestants(oneView, twoView, threeView);
+			
 		} else {
 			//no option selected.  Return female contestants.
 			Window.alert("None on");
@@ -109,15 +183,15 @@ public class GameBoardPresenter implements Presenter {
 	
 	private ArrayList<ContestantView> getUnClickedContestantViews(ContestantView clickedView) {
 		ArrayList<ContestantView> unclicked = new ArrayList<ContestantView>();
-		if (clickedView.equals(contestantOne)) {
-			unclicked.add(contestantTwo);
-			unclicked.add(contestantThree);
-		} else if (clickedView.equals(contestantTwo)) {
-			unclicked.add(contestantOne);
-			unclicked.add(contestantThree);
-		} else if (clickedView.equals(contestantThree)) {
-			unclicked.add(contestantOne);
-			unclicked.add(contestantTwo);
+		if (clickedView.equals(gameBoardView.getContestantOne())) {
+			unclicked.add(gameBoardView.getContestantTwo());
+			unclicked.add(gameBoardView.getContestantThree());
+		} else if (clickedView.equals(gameBoardView.getContestantTwo())) {
+			unclicked.add(gameBoardView.getContestantOne());
+			unclicked.add(gameBoardView.getContestantThree());
+		} else if (clickedView.equals(gameBoardView.getContestantThree())) {
+			unclicked.add(gameBoardView.getContestantOne());
+			unclicked.add(gameBoardView.getContestantTwo());
 		}
 		return unclicked;
 	}

@@ -11,6 +11,9 @@ public interface ContestantView extends IsWidget {
 	public void setWikiButtonValue(boolean toWiki);
 	public void setMerryButtonValue(boolean toMerry);
 	public void setKillButtonValue(boolean toKill);
+	
+	public void hide();
+	public void show();
 
 	public interface Presenter {
 		void onWikiChange(ContestantView c, boolean turnedOn);
