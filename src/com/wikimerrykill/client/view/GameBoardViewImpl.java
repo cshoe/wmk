@@ -1,15 +1,13 @@
 package com.wikimerrykill.client.view;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
-import com.wikimerrykill.client.event.ContestantButtonClickEvent;
-import com.wikimerrykill.client.presenter.GameBoardPresenter;
 
 public class GameBoardViewImpl extends Composite implements GameBoardView {
 
@@ -26,26 +24,18 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 	ContestantView numberThree;
 	
 	private Presenter presenter;
-	private EventBus eventBus;
 	
 	@Inject
-	public GameBoardViewImpl(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three, EventBus eventBus) {
-		numberOne = one;
-		numberTwo = two;
-		numberThree = three;
-		this.eventBus = eventBus;
-		setPresenter(new GameBoardPresenter(this, this.eventBus));
+	public GameBoardViewImpl() {
 		init();
 		
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		panel.add(one);
-		panel.add(two);
-		panel.add(three);
 	}
 	
 	private void init() {
-		ContestantButtonClickEvent.register(eventBus, presenter);
+		numberOne = new ContestantViewImpl();
+		numberTwo = new ContestantViewImpl();
+		numberThree = new ContestantViewImpl();
 	}
 	
 	public ContestantView getContestantOne() {
@@ -73,15 +63,9 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 	}
 	
 	public void refreshContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three) {
-		hideContestants();
+		clear();
 		changeContestants(one, two, three);
 		showContestants();
-	}
-	
-	public void hideContestants() {
-		panel.remove(numberOne);
-		panel.remove(numberTwo);
-		panel.remove(numberThree);
 	}
 	
 	public void changeContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three) {
@@ -95,8 +79,23 @@ public class GameBoardViewImpl extends Composite implements GameBoardView {
 		panel.add(numberTwo);
 		panel.add(numberThree);
 	}
+	
+	public void clear() {
+		panel.clear();
+	}
+	
+	public void showNoOptions() {
+		clear();
+		Label l = new Label();
+		l.setText("Need some options");
+		panel.add(l);
+	}
 
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+	}
+
+	public void addContestant(ContestantView cv) {
+		panel.add(cv);
 	}
 }

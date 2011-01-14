@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ToggleButton;
 import com.google.gwt.user.client.ui.Widget;
-import com.wikimerrykill.client.ContestantDO;
+import com.wikimerrykill.api.search.ImageSearchTool;
 
 public class ContestantViewImpl extends Composite implements ContestantView {
 
@@ -28,14 +28,21 @@ public class ContestantViewImpl extends Composite implements ContestantView {
 	
 	private Presenter presenter;
 	
-	public ContestantViewImpl(ContestantDO data) {
+	public ContestantViewImpl() {
+		init();
+		
 		initWidget(uiBinder.createAndBindUi(this));
-		link.setHref(data.getPageUrl());
+		/*link.setHref(data.getPageUrl());
 		link.setText(data.getName());
 		image.setUrl(data.getImageUrl());
 		wikiButton.setText("Wiki");
 		merryButton.setText("Merry");
 		killButton.setText("Kill");
+		*/
+	}
+	
+	private void init() {
+		
 	}
 	
 	@UiHandler("wikiButton")

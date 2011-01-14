@@ -15,6 +15,11 @@ public interface GameBoardView extends IsWidget {
 	
 	public void refreshContestants(ContestantViewImpl one, ContestantViewImpl two, ContestantViewImpl three);
 	
+	public void addContestant(ContestantView cv);
+	
+	public void clear();
+	public void showNoOptions();
+	
 	public interface Presenter extends ContestantButtonClickHandler, GameOptionsChangeHandler {
 		
 	}

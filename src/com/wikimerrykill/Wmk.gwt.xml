@@ -16,6 +16,7 @@
   <inherits name="com.google.gwt.place.Place"/>
   <inherits name="com.google.gwt.inject.Inject"/>
   <inherits name="com.google.gwt.resources.Resources"/>
+  <inherits name="com.google.gwt.search.Search"/>
   
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.wikimerrykill.client.Wmk'/>
@@ -23,5 +24,6 @@
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>
+  <source path='api'/>
 
 </module>

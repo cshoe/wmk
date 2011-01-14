@@ -3,8 +3,8 @@ package com.wikimerrykill.client.presenter;
 import java.util.ArrayList;
 
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.Window;
 import com.google.inject.Inject;
+import com.wikimerrykill.api.search.ImageSearchTool;
 import com.wikimerrykill.client.ContestantDO;
 import com.wikimerrykill.client.event.ContestantButtonClickEvent;
 import com.wikimerrykill.client.event.GameOptionsChangeEvent;
@@ -29,11 +29,22 @@ public class GameBoardPresenter implements Presenter {
 	
 	private void bind() {
 		GameOptionsChangeEvent.register(eventBus, this);
+		ContestantButtonClickEvent.register(eventBus, this);
 	}
 	
 	public void onGameOptionsChange(GameOptionsChangeEvent e) {
 		//get new contestants based on options
+		/*
 		if (e.getFemaleOn() && e.getMaleOn()) {
+			String nameOne = "Courtney Cox";
+			String nameTwo = "Courtney Love";
+			String nameThree = "Princess Leia Organa";
+			
+			ImageSearchTool ist = new ImageSearchTool();
+			ist.searchImages(null, nameOne);
+			
+			
+			
 			ContestantDO one = 
 				new ContestantDO(
 						"Courtney Love",
@@ -125,9 +136,9 @@ public class GameBoardPresenter implements Presenter {
 			gameBoardView.refreshContestants(oneView, twoView, threeView);
 			
 		} else {
-			//no option selected.  Return female contestants.
-			Window.alert("None on");
+			gameBoardView.showNoOptions();
 		}
+		*/
 	}
 
 	//Handles button clicks from contestant views

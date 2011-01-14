@@ -32,4 +32,13 @@ public class ContestantPresenter implements Presenter {
 		eventBus.fireEvent(w);
 	}
 
+	public void onGameOptionsChange() {
+		
+	}
+	
+	public void refresh() {
+		
+		
+	}
+
 }

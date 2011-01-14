@@ -18,7 +18,8 @@ public interface ContestantView extends IsWidget {
 	public interface Presenter {
 		void onWikiChange(ContestantView c, boolean turnedOn);
 		void onMerryChange(ContestantView c, boolean turnedOn);
-		void onKillChange(ContestantView c, boolean turnedOn); 
+		void onKillChange(ContestantView c, boolean turnedOn);
+		void refresh();
 	}
 	
 	void setPresenter(Presenter presenter);
